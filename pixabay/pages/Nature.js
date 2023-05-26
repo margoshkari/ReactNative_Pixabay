@@ -21,14 +21,20 @@ export function Nature({navigation}){
         );
       }
     return(
-        <View>
-            <FlatList
-        data={data}
-        numColumns={2}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
-        contentContainerStyle={styles.listContainer}
-      />
+      <View>
+      {!data ? 
+        <View style={{alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
+          <Text style={{fontSize: 20}}>Loading...</Text>
         </View>
+       :
+      <FlatList
+      data={data}
+      numColumns={2}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={renderItem}
+      contentContainerStyle={styles.listContainer}
+    />
+      }
+    </View>
     )
 }

@@ -10,19 +10,22 @@ import { Nature } from "./pages/Nature";
 import { Space } from "./pages/Space";
 import { Main } from "./pages/Main";
 import { StyleSheet } from 'react-native';
+import AppContext from "./context";
 
 export default function App() {
   const [token, setToken] = useState('');
   return (
-    <NavigationContainer>
-          <Tab.Navigator screenOptions={{headerShown: false}}>
-            <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Main' component={Main}/>
-            <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Architecture' component={Architecture}/>
-            <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Motorcicle' component={Motorcicle}/>
-            <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Nature' component={Nature}/>
-            <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Space' component={Space}/>
-          </Tab.Navigator>
-  </NavigationContainer>
+    <AppContext.Provider value={{token, setToken}}>
+      <NavigationContainer>
+                <Tab.Navigator screenOptions={{headerShown: false}}>
+                  <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Main' component={Main}/>
+                  <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Architecture' component={Architecture}/>
+                  <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Motorcicle' component={Motorcicle}/>
+                  <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Nature' component={Nature}/>
+                  <Tab.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Space' component={Space}/>
+                </Tab.Navigator>
+        </NavigationContainer>
+    </AppContext.Provider>
   );
 }
 
