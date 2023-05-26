@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { View, Image, FlatList } from "react-native";
+import React, { useEffect, useState, useContext } from "react";
+import { View, Image, FlatList, Text } from "react-native";
 import { getData } from "../model/requires";    
 import { styles } from "../styles/Main";
+import AppContext from "../context";
 export function Nature({navigation}){
     const [data, setData] = useState(null);
+    const {token} = useContext(AppContext);
     async function fetchData() {
+      if(token){
         const result = await getData(
-          "https://pixabay.com/api/?key=35716097-095157818fa3448d33960631a&q=nature&image_type=photo"
+          `https://pixabay.com/api/?key=${token}&q=nature&image_type=photo`
         );
         setData(result);
+      }
       }
     useEffect(() => {
         fetchData();

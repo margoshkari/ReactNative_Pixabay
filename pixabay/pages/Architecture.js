@@ -6,7 +6,7 @@ import AppContext from "../context";
 
 export function Architecture({navigation}){
     const [data, setData] = useState(null);
-    const {token, setToken} = useContext(AppContext);
+    const {token} = useContext(AppContext);
     async function fetchData() {
       if(token){
         const result = await getData(

@@ -14,6 +14,9 @@ export function Main({navigation}){
               value={token}
               onChangeText={(token) => setToken(token)}
               ></TextInput>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate('Architecture')}>
+                <Text style={{fontSize: 17, marginTop: 20}}>Submit</Text>
+              </TouchableWithoutFeedback>
             </View>
           </TouchableWithoutFeedback>
       )
